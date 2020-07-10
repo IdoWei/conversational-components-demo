@@ -4,16 +4,16 @@ import {useUserTyping, useBotTyping, ChatWindow} from "@conversationalcomponents
 const userAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT81QmykJ0niSYh8dlYb7hLXE2Uf8JqurCjQw&usqp=CAU";
 const botAvatar = "https://img.icons8.com/plasticine/2x/bot.png";
 
-const ChatPage = () => {
+const ChatPage = (props) => {
+    const { onSubmit, nextBotReply, setNextBotReply } = props;
     const [content, setContent] = useState([]);
     const [lastInputValue, setLastInputValue] = useState("");
     const [lastUnsubmittedInput, setLastUnsubmittedInput] = useState("");
-    const [nextBotReply, setNextBotReply] = useState("");
 
     useEffect(() => {
         const lastEntry = content.length && content[content.length - 1];
         if (!lastEntry || lastEntry.isUser) return;
-        setNextBotReply(lastInputValue);
+        setNextBotReply(nextBotReply || "");
         setLastInputValue("");
     }, [content]);
 
@@ -31,14 +31,17 @@ const ChatPage = () => {
         lastEntry.message = nextBotReply;
         lastEntry.isLoading = false;
         setNextBotReply("");
-    }, [isBotDoneTyping]);
+    }, [isBotDoneTyping, nextBotReply]);
 
     return (
         <ChatWindow
             headerAdditionalContent={<div style={{flex: 1, display: "flex", justifyContent: "center"}}>Ido's Chat</div>}
             content={content}
             onChange={(text) => setLastUnsubmittedInput(text)}
-            onSubmit={(text) => setLastInputValue(text)}
+            onSubmit={(text) => { 
+                setLastInputValue(text); 
+                onSubmit(text) 
+            }}
         />
     );
 };
