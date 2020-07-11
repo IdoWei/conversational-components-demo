@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useUserTyping, useBotTyping, ChatWindow} from "@conversationalcomponents/chat-window";
+import PropTypes from 'prop-types';
 
 const userAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT81QmykJ0niSYh8dlYb7hLXE2Uf8JqurCjQw&usqp=CAU";
 const botAvatar = "https://img.icons8.com/plasticine/2x/bot.png";
@@ -44,6 +45,12 @@ const ChatPage = (props) => {
             }}
         />
     );
+};
+
+ChatPage.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    nextBotReply: PropTypes.string.isRequired,
+    setNextBotReply: PropTypes.func.isRequired,
 };
 
 export default ChatPage;
