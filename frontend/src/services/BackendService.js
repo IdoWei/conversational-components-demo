@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_URL = "http://localhost:4000";
-  
+const { API_URL } = window;
+
 const BackendService = {
     EchoMessage: (message) => axios.post(`${API_URL}/messages/echo-message`, {message})
         .then(function (response) {
