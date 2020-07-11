@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ChatPage from '../components/ChatPage.js';
 import BackendService from '../../../services/BackendService.js';
-
+  
 const ChatPageContainer = props => {
     const [nextBotReply, setNextBotReply] = useState("");
 

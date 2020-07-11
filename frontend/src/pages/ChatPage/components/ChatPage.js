@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const userAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT81QmykJ0niSYh8dlYb7hLXE2Uf8JqurCjQw&usqp=CAU";
 const botAvatar = "https://img.icons8.com/plasticine/2x/bot.png";
-
+  
 const ChatPage = (props) => {
     const { onSubmit, nextBotReply, setNextBotReply } = props;
     const [content, setContent] = useState([]);
