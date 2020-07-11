@@ -1,7 +1,8 @@
 import { echoMessage } from "../../services/messagesService.js";
 
-export default async ({ response, bodyData }) => {
+export default ({ response, bodyData }) => {
     const { message } = bodyData;
 
-    response.body = await echoMessage(message);
+    console.log('entered echoMessage API with body: ', bodyData);
+    response.body = echoMessage(message);
 };

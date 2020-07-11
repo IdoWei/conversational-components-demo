@@ -6,7 +6,7 @@ import { oakCors } from "https://deno.land/x/cors/mod.ts";
 
 const app = new Application();
 
-app.use(oakCors({origin: "http://localhost:3000"}));
+app.use(oakCors());
 app.use(async (ctx, next) => {
     const bodyData = await ctx.request.body();
 
