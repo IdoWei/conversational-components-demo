@@ -1,1 +1,5 @@
-export const echoMessage = (message) => message;
+class MessagesService {
+  echoMessage = (message) => message;
+}
+
+export default MessagesService;
